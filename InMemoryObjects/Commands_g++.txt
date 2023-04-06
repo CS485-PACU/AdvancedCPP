@@ -1,0 +1,3 @@
+# https://gcc.gnu.org/onlinedocs/gcc-9.1.0/gcc/Developer-Options.html
+
+g++ -fdump-lang-class=bin/cat_single.out -c src/cat.cpp -Iinclude -o bin/cat.o
