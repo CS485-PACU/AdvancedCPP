@@ -11,17 +11,14 @@ SUBDIRS := $(wildcard */.)
 SUBDIRSCLEAN := $(addsuffix clean, $(SUBDIRS))
 
 all: $(SUBDIRS)
-	@echo $(SUBDIRS)
 
 $(SUBDIRS):
 	$(MAKE) -f Makefile_linux -C $@
 
 clean: $(SUBDIRSCLEAN)
 	@echo $(SUBDIRSCLEAN)
-	@echo DONE
 
 %/.clean: %
-	echo DONE
 	$(MAKE) -f Makefile_linux -C $< clean
 
 .PHONY: all $(SUBDIRS)
