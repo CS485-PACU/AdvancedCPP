@@ -24,6 +24,8 @@ public:
     : mFName (fname), mLName (lname), mSalary(salary), mCurrentBonus(0)
   {}
 
+  virtual ~Employee();
+
   void giveBonus (unsigned long long bonus);
 
   unsigned long long getSalary ();

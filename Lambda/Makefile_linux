@@ -30,7 +30,7 @@ CPP_VERSION=c++2a
 bin:
 	mkdir -p bin
 
-bin/main: bin src/*.cpp include/*.h
+bin/main: bin src/*.cpp #include/*.h
 	${compiler} -std=${CPP_VERSION} -o bin/main -g -Wall src/*.cpp -Iinclude
 
 #bin/main.o: bin src/helloWorld.cpp

@@ -24,6 +24,17 @@ void Employee::giveBonus (unsigned long long bonus)
 }
 
 //***************************************************************************
+// Function:    destructor
+//
+// Description: destroy object
+//
+//***************************************************************************
+Employee::~Employee()
+{
+
+}
+
+//***************************************************************************
 // Function:    getSalary
 //
 // Description: Retrieve the Employee's salary
