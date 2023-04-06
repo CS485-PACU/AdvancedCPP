@@ -1,0 +1,122 @@
+{
+    "version": "2.0.0",
+     "windows": {
+    "options": {
+      "shell": {
+        "executable": "cmd.exe",
+        "args": [
+          "/C",
+          // The path to VsDevCmd.bat depends on the version of Visual Studio you have installed.
+          // Examples:
+          //"\"C:/Program Files (x86)/Microsoft Visual Studio/2022/Community/Common7/Tools/VsDevCmd.bat\"",
+          //"\"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/Tools/VsDevCmd.bat\"",
+          // the following line should be the default for Pacific 204 and Strain 222
+          "\"C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/Tools/VsDevCmd.bat\"",
+          "&&"
+        ]
+      }
+    }
+  },
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "windows": {
+                "command": "nmake",
+                "args": [
+                    "/f",
+                    "Makefile_windows"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "--file=Makefile_linux"
+                ]
+            },
+            "osx": {
+                "command": "make",
+                "args": [
+                    "--file=Makefile_linux"
+                ]
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$msCompile",
+                "$gcc"
+            ]
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "windows": {
+                "command": "nmake",
+                "args": [
+                    "/f",
+                    "Makefile_windows",
+                    "clean"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "--file=Makefile_linux",
+                    "clean"
+                ]
+            },
+            "osx": {
+                "command": "make",
+                "args": [
+                    "--file=Makefile_linux",
+                    "clean"
+                ]
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$msCompile",
+                "$gcc"
+            ]
+        },
+        {
+            "label": "runMe",
+            "type": "shell",
+            "windows": {
+                "command": "nmake",
+                "args": [
+                    "/f",
+                    "Makefile_windows",
+                    "runMe"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "--file=Makefile_linux",
+                    "runMe"
+                ]
+            },
+            "osx": {
+                "command": "make",
+                "args": [
+                    "--file=Makefile_linux",
+                    "runMe"
+                ]
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$msCompile",
+                "$gcc"
+            ]
+        }
+    ]
+}
