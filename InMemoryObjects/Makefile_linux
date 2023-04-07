@@ -9,10 +9,10 @@
 
 
 FILES := $(wildcard src/*.cpp)
-TARGETS := $(addsuffix .o, $(FILES))
+TARGETS := $(addprefix bin/, $(notdir $(addsuffix .out, $(FILES))))
+
 
 all: bin $(TARGETS)
-	echo $(TARGETS)
 
 #compiler=clang++
 compiler=g++
@@ -31,14 +31,10 @@ CPP_VERSION=c++2a
 
 bin:
 	mkdir -p bin
-	mkdir -p bin/src
 
-%.o: %
-	echo $@
-	g++ -fdump-lang-class=bin/$<_single.out -c $< -Iinclude -o bin/ignore.o
+bin/%.out: src/$(notdir %)
+	g++ -fdump-lang-class=$@ -c $< -Iinclude -o bin/ignore.o
 
 
 clean:
 	rm -rf bin/*.o bin/*.out
-
-#.PHONY: all $(TARGETS)
