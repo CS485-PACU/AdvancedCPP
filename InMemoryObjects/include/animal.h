@@ -14,13 +14,14 @@ cl.exe /c /d1reportSingleClassLayoutanimal animal.cpp > animal_single.out
 
 #pragma once
 
-#include <stdio.h>
+#include <iostream>
 
 class animal 
 {
   public:
     animal() ;
     animal(int w);
+    virtual ~animal() {};
     int getWeight() ;
     void setWeight (int *w);
 

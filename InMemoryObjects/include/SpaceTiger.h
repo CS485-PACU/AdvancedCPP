@@ -21,10 +21,10 @@ class SpaceTiger : public tiger, public SpaceCreature
 {
 public:
   SpaceTiger (int w, int oxygen);
+  virtual ~SpaceTiger() {};
+  virtual void useOxygen ();
 
-  void useOxygen ();
-
-  void hi ();
+  virtual void hi ();
 
 
 private:

@@ -21,12 +21,13 @@ class cat : public animal
   public:
     cat(int w);
 
-    void makeSound();
-    int getWeight2();
+    virtual ~cat() { };
+    virtual void makeSound();
+    virtual int getWeight2();
     void bye();
     void boggle();
     void boggle(int x);
-    void hi();
+    virtual void hi();
 
     virtual int getTeeth ();
 

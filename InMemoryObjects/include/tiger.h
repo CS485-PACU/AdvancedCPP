@@ -20,9 +20,10 @@ class tiger : public cat
 {
 public:
   tiger (int w);
+  virtual ~tiger() {};
 
-  int getWeight2 ();
-  void hi ();
+  virtual int getWeight2 ();
+  virtual void hi ();
 
   int nonVirtualFunction ();
 

@@ -21,6 +21,7 @@ class SpaceCreature
 public:
   SpaceCreature (int oxygen);
 
+  virtual ~SpaceCreature() {};
   int getOxygen () const;
 
   virtual void useOxygen ();
