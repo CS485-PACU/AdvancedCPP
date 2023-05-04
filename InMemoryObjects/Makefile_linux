@@ -12,7 +12,7 @@ FILES := $(wildcard src/*.cpp)
 TARGETS := $(addprefix bin/, $(notdir $(addsuffix .out, $(FILES))))
 
 
-all: bin $(TARGETS) bin/main
+all: bin $(TARGETS) bin/main.s
 
 #compiler=clang++
 compiler=g++
@@ -36,7 +36,7 @@ bin/%.out: src/$(notdir %)
 	g++ -fdump-lang-class=$@ -c $< -Iinclude -o bin/ignore.o
 
 
-bin/main: src/*.cpp include/*.h
+bin/main.s: src/*.cpp include/*.h
 	g++ -o bin/main.s -Wall -g src/driver.cpp -Iinclude  -fverbose-asm -S
 
 clean:
