@@ -13,12 +13,12 @@ SUBDIRSCLEAN := $(addsuffix clean, $(SUBDIRS))
 all: $(SUBDIRS)
 
 $(SUBDIRS):
-	$(MAKE) -f Makefile_linux -C $@
+	$(MAKE) -f Makefile -C $@
 
 clean: $(SUBDIRSCLEAN)
 	@echo $(SUBDIRSCLEAN)
 
 %/.clean: %
-	$(MAKE) -f Makefile_linux -C $< clean
+	$(MAKE) -f Makefile -C $< clean
 
 .PHONY: all $(SUBDIRS)
