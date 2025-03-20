@@ -30,7 +30,7 @@ CPP_VERSION=c++2b
 bin:
 	mkdir -p bin
 
-bin/main: bin src/*.cpp include/*.h
+bin/main: bin src/*.cpp
 	${compiler} -std=${CPP_VERSION} -o bin/main -g -Wall src/*.cpp -Iinclude
 
 #bin/main.o: bin src/helloWorld.cpp
@@ -40,7 +40,7 @@ valgrind: bin/main
 	valgrind ${VALGRIND_FLAGS} bin/main
 
 printAll:
-	enscript ${ENSCRIPT_FLAGS} src/*.cpp include/*.h  | ps2pdf - bin/src.pdf
+	enscript ${ENSCRIPT_FLAGS} src/*.cpp  | ps2pdf - bin/src.pdf
 
 runMe: bin/main
 	bin/main
