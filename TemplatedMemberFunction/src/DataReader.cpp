@@ -2,12 +2,12 @@
 
 DataReader::DataReader(const std::string &rcName)
 {
-  mSource.open(rcName);
+  mcSource.open(rcName);
 }
 
 DataReader::~DataReader()
 {
-  mSource.close();
+  mcSource.close();
 }
 
 

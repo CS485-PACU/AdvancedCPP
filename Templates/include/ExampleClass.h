@@ -36,6 +36,6 @@ public:
 
 private:
   int mKey;
-  std::string mSecretData;
+  std::string mcSecretData;
   static const bool CTOR_MSGS = false;
 };

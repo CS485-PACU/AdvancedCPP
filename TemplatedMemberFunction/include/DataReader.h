@@ -19,7 +19,7 @@ class DataReader
 
   private:
 
-    std::ifstream mSource;
+    std::ifstream mcSource;
 };
 
 template<class T>
@@ -27,7 +27,7 @@ bool DataReader::readData(T &rcItem)
 {
   bool retVal = false;
 
-  if ( mSource >> rcItem)  
+  if ( mcSource >> rcItem)  
   {
     retVal = true;
   }

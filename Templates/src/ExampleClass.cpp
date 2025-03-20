@@ -18,7 +18,7 @@
 //
 // Returned:    None
 //***************************************************************************
-ExampleClass::ExampleClass () : mKey(-1), mSecretData("unknown")
+ExampleClass::ExampleClass () : mKey(-1), mcSecretData("unknown")
 {
   if (CTOR_MSGS)
   {
@@ -38,7 +38,7 @@ ExampleClass::ExampleClass () : mKey(-1), mSecretData("unknown")
 // Returned:    None
 //***************************************************************************
 ExampleClass::ExampleClass (int key, std::string secretData) :
-  mKey(key), mSecretData(secretData)
+  mKey(key), mcSecretData(secretData)
 {
   if (CTOR_MSGS)
   {
@@ -57,7 +57,7 @@ ExampleClass::ExampleClass (int key, std::string secretData) :
 // Returned:    None
 //***************************************************************************
 ExampleClass::ExampleClass (const ExampleClass &rcData) :
-  mKey (rcData.mKey), mSecretData (rcData.mSecretData)
+  mKey (rcData.mKey), mcSecretData (rcData.mcSecretData)
 {
   if (CTOR_MSGS)
   {
@@ -94,7 +94,7 @@ ExampleClass::~ExampleClass ()
 ExampleClass & ExampleClass::operator=(ExampleClass cData)
 {
   std::swap (this->mKey, cData.mKey);
-  std::swap (this->mSecretData, cData.mSecretData);
+  std::swap (this->mcSecretData, cData.mcSecretData);
 
   return *this;
 }
@@ -182,6 +182,6 @@ bool ExampleClass::operator<=(const ExampleClass &rcData) const
 //***************************************************************************
 std::ostream& operator<<(std::ostream &rcOut, const ExampleClass &rcData)
 {
-  rcOut << rcData.mKey << ":" << rcData.mSecretData;
+  rcOut << rcData.mKey << ":" << rcData.mcSecretData;
   return rcOut;
 }
