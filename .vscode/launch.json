@@ -5,43 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug",
-            "request": "launch",
-            "args": [],
-            "stopAtEntry": true,
-            "cwd": "${workspaceFolder}",  
-            "environment": [],
-            "type":  "cppdbg", // this cannot be in OSX block??
-            "program": "${workspaceFolder}/bin/main", // warnings if no default is given
-            "console": "integratedTerminal",
-            "osx": {
-                "MIMode": "lldb",   
-                "type" : "lldb", // install CodeLLDB
-                "program": "${workspaceFolder}/bin/main",
-            },
-            "linux": {
-                "miDebuggerPath": "/usr/bin/gdb",
-                "program": "${workspaceFolder}/bin/main",
-
-            },
-            "windows": {
-                "program": "${workspaceFolder}/bin/main.exe",
-                "type": "cppvsdbg",
-            },
-            "preLaunchTask": "build", // THIS IS IMPORTANT
-        },
-        {
             "name": "lldb - debug",
             "request": "launch",
-            "args": [],
+            "args": [ ],
             "cwd": "${workspaceFolder}",  
-            "environment": [],
             "type":  "lldb", // install CodeLLDB
             "program": "${workspaceFolder}/bin/main", // warnings if no default is given
             "console": "integratedTerminal",
-            "MIMode": "lldb",   
-            "program": "${workspaceFolder}/bin/main",
             "preLaunchTask": "build", // THIS IS IMPORTANT
+            // "initCommands": [ // add commands to send to the debugger (LLDB)
+              //   "settings set target.process.follow-fork-mode child"
+              // ],
         }
     ]
 }
