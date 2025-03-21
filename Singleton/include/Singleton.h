@@ -11,26 +11,26 @@
 
 class Singleton
 {
-public:
+	public:
 
-  // More Effective C++: S. Meyers. (modified)
+		// More Effective C++: S. Meyers. (modified)
 
-  static Singleton& Instance ();
-  
-  // non-static public methods
-  void incrCount ();
+		static Singleton& Instance ();
+		
+		// non-static public methods
+		void incrCount ();
 
-  friend std::ostream& operator<<(std::ostream &rcOut, 
-    const Singleton &rcData);
+		friend std::ostream& operator<<(std::ostream &rcOut, 
+			const Singleton &rcData);
 
-private:
-  Singleton ();                                     // ctor is hidden
-  Singleton (Singleton const&) = delete;            // copy ctor is hidden
+	private:
+		Singleton ();                                     // ctor is hidden
+		Singleton (Singleton const&) = delete;            // copy ctor is hidden
 
-  ~Singleton (); // not virtual, no subclass. hidden so no user can delete obj.
+		~Singleton (); // not virtual, no subclass. hidden so no user can delete obj.
 
-  Singleton& operator=(Singleton const&) = delete;  // assign op is hidden
+		Singleton& operator=(Singleton const&) = delete;  // assign op is hidden
 
-  // private data members
-  int mCounter = 0;
+		// private data members
+		int mCounter = 0;
 };
