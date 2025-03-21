@@ -41,7 +41,9 @@ void useSingletonInFunction ()
 //***************************************************************************
 int main ()
 {
-  Singleton &cSingleton = Singleton::Instance ();
+	std::cerr << "START MAIN\n";
+
+	Singleton &cSingleton = Singleton::Instance ();
   Singleton &cSingletonTwo = Singleton::Instance ();
 
   std::cout << cSingleton;
@@ -61,6 +63,8 @@ int main ()
 
   // delete &Singleton::Instance (); // illegal
   // delete &cSingleton;  // illegal
+
+	std::cerr << "STOP MAIN\n";
 
   return EXIT_SUCCESS;
 }
