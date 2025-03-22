@@ -17,6 +17,8 @@
 #include <algorithm>
 #include "ExampleClass.h"
 
+void vectorOfInts ();
+
 //***************************************************************************
 // Function:    sumThem 
 //
@@ -473,6 +475,61 @@ int main ()
   unorderedMapOfObjects (40, 10);
   std::cout << "----------------------" << std::endl;
   std::cout << "----------------------" << std::endl;
+	
+	vectorOfInts();
 
   return EXIT_SUCCESS;
+}
+
+
+//***************************************************************************
+// Function:    vectorOfInts() 
+//
+// Description: Function to demonstrate how to use a vector of ints
+//
+// Parameters:  None
+//              
+// Returned:    None
+//***************************************************************************
+void vectorOfInts ()
+{
+  std::cout << "VECTOR OF INTS" << std::endl;
+
+  std::vector<int> cVector = {0, 1, 2};
+
+  for (std::vector<int>::const_iterator it = cVector.cbegin ();
+    it != cVector.cend (); ++it) {
+    std::cout << *it << std::endl;
+  }
+
+	for (auto it = cVector.begin (); it != cVector.end (); ++it) {
+    std::cout << *it << std::endl;
+		*it += 2;
+  }
+
+	for (auto const &value : cVector)
+  {
+    std::cout << value << std::endl;
+  }
+  std::cout << "--" << std::endl;
+	std::cout << cVector.size () << std::endl;
+  std::cout << "----------------------" << std::endl;
+  for (std::vector<int>::const_iterator it = cVector.cbegin ();
+    it != cVector.cend (); ++it)
+  {
+    std::cout << *it << std::endl;
+  }
+
+  std::cout << cVector.size () << std::endl;
+  std::cout << "----------------------" << std::endl;
+  for (auto it = cVector.cbegin ();
+    it != cVector.cend (); ++it)
+  {
+    std::cout << *it << std::endl;
+  }
+  cVector.clear ();
+
+  std::cout << cVector.size () << std::endl;
+
+
 }
