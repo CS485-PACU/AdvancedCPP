@@ -18,7 +18,7 @@
 #include "ExampleClass.h"
 
 void vectorOfInts ();
-
+void mapExample ();
 //***************************************************************************
 // Function:    sumThem 
 //
@@ -477,10 +477,23 @@ int main ()
   std::cout << "----------------------" << std::endl;
 	
 	vectorOfInts();
-
+	mapExample ();
   return EXIT_SUCCESS;
 }
 
+
+//***************************************************************************
+// Function:    printInt() 
+//
+// Description: Function to print a single int followed by a space
+//
+// Parameters:  value - the int to print
+//              
+// Returned:    None
+//***************************************************************************
+void printInt (int value) {
+	std::cout << value << " ";
+}
 
 //***************************************************************************
 // Function:    vectorOfInts() 
@@ -527,9 +540,105 @@ void vectorOfInts ()
   {
     std::cout << *it << std::endl;
   }
+
+	std::for_each(cVector.begin(), cVector.end(), printInt);
+
+	std::for_each(cVector.begin(), cVector.end(), 
+		[](auto value) { 						// lambda
+			std::cout << value << ",";
+		}
+	);
+
   cVector.clear ();
 
   std::cout << cVector.size () << std::endl;
 
+
+}
+struct SortStringByLength{
+	bool operator () (const std::string &rcLHS, const std::string &rcRHS) const {
+		return rcLHS.length () < rcRHS.length ();
+	}
+};
+
+
+//***************************************************************************
+// Function:    mapExample() 
+//
+// Description: Function to demonstrate how to use a map of int, strings
+//
+// Parameters:  None
+//              
+// Returned:    None
+//***************************************************************************
+void mapExample ()
+{
+
+  std::cout << "MAP OF strings" << std::endl;
+
+	//map,  pair
+  //http://en.cppreference.com/w/cpp/container/map
+  // usually a red-black tree
+  std::map<int, std::string> cTheMap;
+
+  for (int i = 0; i < 3; i++) {
+    cTheMap.insert (std::make_pair (i,  std::to_string (i+i)));
+  }
+
+  for (std::map<int, std::string>::iterator it = cTheMap.begin ();
+    it != cTheMap.end (); ++it) {
+    std::cout << it->first << " " << it->second << std::endl;
+  }
+
+  std::cout << " --------------------- " << std::endl;
+
+  for (auto it = cTheMap.cbegin ();
+    it != cTheMap.cend (); ++it)
+  {
+    std::cout << it->first << " " << it->second << std::endl;
+  }
+
+  //<functional>
+  std::map<int, std::string, std::greater<int>> cTheMapDescending;
+  for (int i = 0; i < 3; i++) {
+    cTheMapDescending.insert (std::make_pair (i, std::to_string (i+i)));
+  }
+
+  for (auto it = cTheMapDescending.cbegin ();
+    it != cTheMapDescending.cend (); ++it) {
+    std::cout << it->first << " " << it->second << std::endl;
+  }
+
+
+  std::cout << "----------------------" << std::endl;
+  std::cout << "----------------------" << std::endl;
+
+	std::map<std::string, int, struct SortStringByLength> cStringKeyMap;
+
+	cStringKeyMap.insert(std::make_pair("Three", 3));
+	cStringKeyMap.insert(std::make_pair("Four", 4));
+	cStringKeyMap.insert(std::make_pair("One", 1));
+
+	std::for_each(cStringKeyMap.begin(), cStringKeyMap.end(), 
+		[](const std::pair<std::string, int>& data) { 						// lambda
+			std::cout << data.first << " " << data.second << ",";
+		}
+	);
+
+	std::map<std::string, int,  decltype([](const std::string &rcLHS, const std::string &rcRHS) {
+		return rcLHS.length() < rcRHS.length();
+	})> cString2KeyMap;
+
+	cString2KeyMap.insert(std::make_pair("Three", 3));
+	cString2KeyMap.insert(std::make_pair("Four", 4));
+	cString2KeyMap.insert(std::make_pair("One", 1));
+
+	std::cout << "STRINGS: \n";
+	std::for_each(cString2KeyMap.begin(), cString2KeyMap.end(), 
+		[](const std::pair<std::string, int>& data) { 						// lambda
+			std::cout << data.first << " " << data.second << ",";
+		}
+	);
+	std::cout<< "\n";
 
 }
