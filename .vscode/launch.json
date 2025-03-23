@@ -16,6 +16,20 @@
             // "initCommands": [ // add commands to send to the debugger (LLDB)
               //   "settings set target.process.follow-fork-mode child"
               // ],
-        }
+        },
+				{
+					"name": "lambda - debug",
+					"request": "launch",
+					"args": [ ],
+					"cwd": "${workspaceFolder}",  
+					"type":  "lldb", // install CodeLLDB
+					"program": "${workspaceFolder}/Lambda/bin/main", // warnings if no default is given
+					"console": "integratedTerminal",
+					"preLaunchTask": "build", // THIS IS IMPORTANT
+					// "initCommands": [ // add commands to send to the debugger (LLDB)
+						//   "settings set target.process.follow-fork-mode child"
+						// ],
+			}
+
     ]
 }

@@ -29,6 +29,26 @@ int takeOperator (std::function<int (int, int)> func)
 }
 
 //***************************************************************************
+// Function:    createOperator - CONTAINS ERROR
+//
+// Description: Creates and returns a new lambda
+//
+// Parameters:  value - the value used in the lambda!
+//
+// Returned:    function with prototype int(int)
+//***************************************************************************
+std::function<int (int)> createOperator (int value)
+{
+  auto func = [&value] (int param) -> int
+  {
+		std::cout << "\nfunc: " << param  << " + " << value << std::endl;
+    return param + value; 
+		// ERROR! value will be popped off stack!
+  };
+  return func;
+}
+
+//***************************************************************************
 // Function:    changeOperator
 //
 // Description: Takes a function as a by-reference parameter and replaces that
@@ -211,6 +231,15 @@ int main ()
     changeOperatorSecretCopy(aMathOps[1]) << std::endl;
   takeOperator (aMathOps[1]);
   std::cout << "aMathOps[1] " << aMathOps[1] (10, 2) << std::endl;
+
+	auto newFunc = createOperator (1);
+	auto newFunc2 = createOperator (3);
+
+	std::cout << "\nEXPECT 8: 7 + 1 : ";
+	std::cout << newFunc (7);
+	std::cout << "\nEXPECT 12: 9 + 3 : ";
+	std::cout << newFunc2 (9);
+	std::cout << std::endl;
 
   return EXIT_SUCCESS;
 }
