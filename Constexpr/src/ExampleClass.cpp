@@ -6,7 +6,7 @@
 // Assignment: Constexpr Examples
 // Purpose:    Demonstrate how to use constexpr with objects
 //***************************************************************************
-#include "ExampleClass.h"
+#include "../include/ExampleClass.h"
 #include <algorithm>
 
 

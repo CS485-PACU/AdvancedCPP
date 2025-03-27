@@ -7,7 +7,7 @@
 // Purpose:    Demonstrate how to use constexpr with objects
 //***************************************************************************
 
-#include "ExampleClassWithoutMove.h"
+#include "../include/ExampleClassWithoutMove.h"
 
 //***************************************************************************
 //Function:    printAll

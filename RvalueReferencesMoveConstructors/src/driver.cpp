@@ -7,8 +7,8 @@
 // Purpose:    Demonstrate how and why to use constexpr
 //***************************************************************************
 
-#include "ExampleClass.h"
-#include "ExampleClassWithoutMove.h"
+#include "../include/ExampleClass.h"
+#include "../include/ExampleClassWithoutMove.h"
 
 #include <vector>
 

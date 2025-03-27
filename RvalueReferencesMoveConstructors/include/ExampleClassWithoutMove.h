@@ -32,7 +32,7 @@ public:
 
   ExampleClassWithoutMove (const ExampleClassWithoutMove &rcObj);
   
-  ~ExampleClassWithoutMove () { delete pInt; };
+  ~ExampleClassWithoutMove () { std::cout << "dtor\n"; delete pInt; };
 
 //  ExampleClassWithoutMove & operator=(const ExampleClassWithoutMove &rcObj);
 

@@ -7,7 +7,7 @@
 // Purpose:    Demonstrate how and why to use constexpr
 //***************************************************************************
 
-#include "ExampleClass.h"
+#include "../include/ExampleClass.h"
 #include <iostream>
 
 //***************************************************************************

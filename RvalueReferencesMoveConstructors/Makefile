@@ -7,7 +7,7 @@
 # Purpose:    
 #############################################################################
 
-all: bin bin/main
+all: bin bin/main bin/main-no-elide
 
 ENSCRIPT_FLAGS=-C -T 2 -p - -M Letter -Ecpp --color -fCourier8
 VALGRIND_FLAGS=-v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all 
@@ -32,6 +32,11 @@ bin:
 
 bin/main: bin src/*.cpp include/*.h
 	${compiler} -std=${CPP_VERSION} -o bin/main -g -Wall src/*.cpp -Iinclude
+	#-fno-elide-constructors 
+
+bin/main-no-elide: bin src/*.cpp include/*.h
+	${compiler} -fno-elide-constructors -std=${CPP_VERSION} -o bin/main-no-elide -g -Wall src/*.cpp -Iinclude
+	
 
 #bin/main.o: bin src/helloWorld.cpp
 #	${compiler} -std=c++20 -c -o bin/main.o -g -Wall src/helloWorld.cpp 
@@ -46,4 +51,4 @@ runMe: bin/main
 	bin/main
 	
 clean:
-	rm -rf bin/main bin/*.o bin/main.dSYM bin/*.pdf
+	rm -rf bin/main* bin/*.o bin/main.dSYM bin/*.pdf
