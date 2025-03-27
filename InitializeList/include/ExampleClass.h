@@ -16,9 +16,11 @@ class ExampleClass
 public:
   ExampleClass (std::initializer_list<int> cList);
 
+	void addItems (std::initializer_list<int> cList);
+	
   void printAll (std::ostream &rcOut) const;
 
 private:
-  std::vector<int> cVec;
+  std::vector<int> mcVec;
 
 };

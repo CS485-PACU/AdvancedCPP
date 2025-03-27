@@ -6,7 +6,7 @@
 // Assignment: Initialize List Example
 // Purpose:    Demonstrate how to use std::initializer_list
 //***************************************************************************
-#include "ExampleClass.h"
+#include "../include/ExampleClass.h"
 #include <algorithm>
 
 
@@ -15,7 +15,7 @@
 //
 // Description: copy items from the initializer_list to the private vector
 //
-// Parameters:  cList – the std::initialize_list
+// Parameters:  cList - the std::initializer_list
 //
 // Returned:    None
 //***************************************************************************
@@ -24,7 +24,7 @@ ExampleClass::ExampleClass (std::initializer_list<int> cList)
   std::for_each (cList.begin (), cList.end (),
     [this](auto cItem) 
     { 
-      cVec.push_back (cItem); 
+      mcVec.push_back (cItem); 
     }
   );
 }
@@ -40,11 +40,27 @@ ExampleClass::ExampleClass (std::initializer_list<int> cList)
 //***************************************************************************
 void ExampleClass::printAll (std::ostream &rcOut) const
 {
-  std::for_each (cVec.begin (), cVec.end (),
+  std::for_each (mcVec.begin (), mcVec.end (),
     [&](auto cItem) 
     { 
       rcOut << cItem << std::endl; 
     }
   );
 
+}
+
+//***************************************************************************
+// Function:    addItems
+//
+// Description: add the items to the member vector
+//
+// Parameters:  cList - the std::initializer_list
+//
+// Returned:    None
+//***************************************************************************
+void ExampleClass::addItems (std::initializer_list<int> cList)
+{
+  for (int x : cList) {
+		mcVec.push_back (x);
+	}
 }

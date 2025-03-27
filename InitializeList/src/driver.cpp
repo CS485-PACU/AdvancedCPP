@@ -6,7 +6,7 @@
 // Assignment: Initialize List Example
 // Purpose:    Demonstrate how to use std::initializer_list
 //***************************************************************************
-#include "ExampleClass.h"
+#include "../include/ExampleClass.h"
 
 //***************************************************************************
 // Function:    main
@@ -26,6 +26,7 @@ int main ()
   cTheClass.printAll (std::cout);
 
   std::cout << std::endl;
+	cTheClass2.addItems ( {150, 170, 250, 270} );
   cTheClass2.printAll (std::cout);
   std::cout << std::endl;
 
