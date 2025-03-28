@@ -15,6 +15,9 @@
 #include <iostream>
 //#include "vld.h"
 
+void test() ;
+void test2();
+
 ExampleClass copyBackExampleClass()
 {
   ExampleClass cRetVal(1,2,3) ;
@@ -220,5 +223,63 @@ int main ()
 
   callFunctions();
 
+	std::cerr << " TEST\n";
+	test2();
+	std::cerr<< "  TEST DONE\n";
+
   return EXIT_SUCCESS;
+}
+
+void test() {
+	ExampleClass cExClass (1, 2, 3);
+  ExampleClass cExClass2 (4, 5, 6);
+
+	std::cerr << "cExClass3\n";
+	// call normal cctor
+	// cExClass2 is an LVALUE
+  ExampleClass cExClass3 (cExClass2);
+
+	std::cerr << "cExClass4\n";
+	// call move op=
+	// the RHS of the = is a
+	// Temporary object - RVALUE
+  ExampleClass cExClass4 = cExClass2 + cExClass3 + cExClass2;
+	std::cerr << "cExClass4 DONE\n";
+
+	std::cerr << "cExClass4 mop=\n";
+	// call move op=
+	// the RHS of the = is a
+	// Temporary object - RVALUE
+	cExClass4 = cExClass2 + cExClass3;
+	std::cerr << "cExClass4 mop= DONE\n";
+
+	std::cerr << "cExClass4 op=\n";
+	// call regular op=
+	// the RHS of the = is an LVALUE
+	cExClass4 = cExClass2;
+	std::cerr << "cExClass4 op= DONE\n";
+
+}
+
+void test2() {
+	ExampleClass cExClass (1, 2, 3);
+  ExampleClass cExClass2 (4, 5, 6);
+
+	std::cerr << "cExClass3\n";
+	// call normal cctor
+	// cExClass2 is an LVALUE
+  ExampleClass cExClass3 (cExClass2);
+
+	std::cerr << "cExClass3 mop=\n";
+	// call move op=
+	// the RHS of the = is a
+	// Temporary object - RVALUE
+	cExClass3 = cExClass + cExClass2;
+	std::cerr << "cExClass3 mop= DONE\n";
+
+	std::cerr << "cExClass3 op=\n";
+	// call regular op=
+	// the RHS of the = is an LVALUE
+	cExClass3 = cExClass2;
+	std::cerr << "cExClass3 op= DONE\n";
 }

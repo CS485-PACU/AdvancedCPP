@@ -40,25 +40,21 @@ void ExampleClass::printAll (std::ostream &rcOut) const
 // Returned:    None
 //***************************************************************************
 
-ExampleClass::ExampleClass (const ExampleClass &rcObj)
-{
+ExampleClass::ExampleClass 
+	(const ExampleClass &rcObj) {
+
   std::cout << "cctor\n";
   mX = rcObj.mX;
   mY = rcObj.mY;
 
   delete pInt;
-  if( nullptr == rcObj.pInt)
-  { 
+  if (nullptr == rcObj.pInt) { 
     pInt = nullptr;
   }
-  else
-  {
+  else {
     pInt = new int;
-    runnew ();
     *pInt = *rcObj.pInt;
-  }
-
-  
+  }  
 }
 
 //***************************************************************************
@@ -70,8 +66,9 @@ ExampleClass::ExampleClass (const ExampleClass &rcObj)
 //
 // Returned:    None
 //***************************************************************************
-ExampleClass::ExampleClass (ExampleClass &&rcObj)
-{
+ExampleClass::ExampleClass 
+  (ExampleClass &&rcObj) {
+
   std::cout << "mctor\n";
   mX = rcObj.mX;
   mY = rcObj.mY;
@@ -81,7 +78,6 @@ ExampleClass::ExampleClass (ExampleClass &&rcObj)
   pInt = rcObj.pInt;
 
   rcObj.pInt = nullptr;
-  
 }
 
 //***************************************************************************
@@ -93,25 +89,21 @@ ExampleClass::ExampleClass (ExampleClass &&rcObj)
 //
 // Returned:    a reference to *this
 //***************************************************************************
-ExampleClass & ExampleClass::operator=(const ExampleClass &rcObj)
-{
+ExampleClass & ExampleClass::operator=
+	(const ExampleClass &rcObj) {
   std::cout << "op=\n";
   mX = rcObj.mX;
   mY = rcObj.mY;
 
   delete pInt;
-  if (nullptr == rcObj.pInt)
-  {
+  if (nullptr == rcObj.pInt) {
     pInt = nullptr;
   }
-  else
-  {
+  else {
     pInt = new int;
     runnew ();
     *pInt = *rcObj.pInt;
-  }
-
-  
+  }   
   return *this;
 }
 
@@ -124,8 +116,8 @@ ExampleClass & ExampleClass::operator=(const ExampleClass &rcObj)
 //
 // Returned:    a reference to *this
 //***************************************************************************
-ExampleClass & ExampleClass::operator=(ExampleClass &&rcObj)
-{
+ExampleClass & ExampleClass::operator= 
+	(ExampleClass &&rcObj) {
   std::cout << "mop=\n";
   mX = rcObj.mX;
   mY = rcObj.mY;
@@ -135,9 +127,7 @@ ExampleClass & ExampleClass::operator=(ExampleClass &&rcObj)
 
   rcObj.pInt = nullptr;
 
-  
-
-  return *this;
+	return *this;
 }
 
 //***************************************************************************
@@ -197,6 +187,6 @@ ExampleClass ExampleClass::operator+(const ExampleClass & rcObj)
 //***************************************************************************
 void runnew ()
 {
-  std::cout << "NEW!" << std::endl;
+  //std::cout << "NEW!" << std::endl;
 }
 

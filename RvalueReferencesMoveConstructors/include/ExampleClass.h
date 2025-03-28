@@ -14,41 +14,42 @@ void runnew ();
 
 class ExampleClass
 {
-public:
+	private:
 
-  ExampleClass (int x, int y) :mX (x), mY (y)
-  {
-    std::cout << "ctor2\n";
-  };
+	  int mX, mY;
 
-  ExampleClass (int x, int y, int z) :mX (x), mY (y)
-  {
-    std::cout << "ctor3\n";
-    pInt = new int;
-    runnew();
-    *pInt = z;
-    
-  };
+  	int *pInt = nullptr;
 
-  ExampleClass (const ExampleClass &rcObj);
 
-  ExampleClass (ExampleClass &&rcObj);
+	public:
 
-  ~ExampleClass () { delete pInt; };
+		ExampleClass (int x, int y) :mX (x), mY (y)
+		{
+			std::cout << "ctor2\n";
+		};
 
-  ExampleClass & operator=(const ExampleClass &rcObj);
+		ExampleClass (int x, int y, int z) :mX (x), mY (y)
+		{
+			std::cout << "ctor3\n";
+			pInt = new int;
+			runnew();
+			*pInt = z;
+			
+		};
 
-  ExampleClass & operator=(ExampleClass &&rcObj);
+		ExampleClass (const ExampleClass &rcObj);
 
-  ExampleClass operator+(const ExampleClass &rcObj);
+		ExampleClass (ExampleClass &&rcObj);
 
-  void printAll (std::ostream &rcOut) const;
+		~ExampleClass () { delete pInt; };
 
-private:
+		ExampleClass & operator=(const ExampleClass &rcObj);
 
-  int mX, mY;
+		ExampleClass & operator=(ExampleClass &&rcObj);
 
-  int *pInt = nullptr;
+		ExampleClass operator+(const ExampleClass &rcObj);
+
+		void printAll (std::ostream &rcOut) const;
 
 };
 
