@@ -17,7 +17,7 @@
 //
 // Returned:    None
 //***************************************************************************
-EmpContainer::SimpleContainer::SimpleContainer ()
+SimpleContainer::SimpleContainer ()
 {
 }
 
@@ -30,7 +30,7 @@ EmpContainer::SimpleContainer::SimpleContainer ()
 //
 // Returned:    None
 //***************************************************************************
-EmpContainer::SimpleContainer::~SimpleContainer ()
+SimpleContainer::~SimpleContainer ()
 {
   for (int i = 0; i < mCurrentEmployees; i++)
   {
@@ -48,7 +48,7 @@ EmpContainer::SimpleContainer::~SimpleContainer ()
 //
 // Returned:    None
 //***************************************************************************
-void EmpContainer::SimpleContainer::addEmployee (Employee *pcAcct)
+void SimpleContainer::addEmployee (Employee *pcAcct)
 {
   if (!isFull ())
   {
@@ -66,7 +66,7 @@ void EmpContainer::SimpleContainer::addEmployee (Employee *pcAcct)
 //
 // Returned:    true if full, false otherwise
 //***************************************************************************
-bool EmpContainer::SimpleContainer::isFull () const
+bool SimpleContainer::isFull () const
 {
   return !(mCurrentEmployees < MAX_PPL);
 }
@@ -80,7 +80,7 @@ bool EmpContainer::SimpleContainer::isFull () const
 //
 // Returned:    the number of employees in the container
 //***************************************************************************
-std::size_t EmpContainer::SimpleContainer::count () const
+std::size_t SimpleContainer::count () const
 {
   return mCurrentEmployees;
 }
@@ -94,7 +94,7 @@ std::size_t EmpContainer::SimpleContainer::count () const
 //
 // Returned:    A reference to that the entry in the container
 //***************************************************************************
-Employee*& EmpContainer::SimpleContainer::operator[] (std::size_t index)
+Employee*& SimpleContainer::operator[] (std::size_t index)
 {
   return mcEmployees[index];
 }
@@ -108,9 +108,27 @@ Employee*& EmpContainer::SimpleContainer::operator[] (std::size_t index)
 //
 // Returned:    A const reference to that the entry in the container
 //***************************************************************************
-Employee* const & EmpContainer::SimpleContainer::operator[] (std::size_t index) const
+Employee* const & SimpleContainer::operator[] (std::size_t index) const
 {
   return mcEmployees[index];
+}
+
+//***************************************************************************
+// Function:    applyVisitor
+//
+// Description: Member function that will walk through the container and
+//              invoke the visitor on each element.
+//
+// Parameters:  pcVisitor - the visitor to invoke
+//
+// Returned:    None
+//***************************************************************************
+void SimpleContainer::applyVisitor (IEmployeeVisitor *pcVisitor)
+{
+  for (std::size_t i = 0; i < count (); ++i)
+  {
+    (mcEmployees[i])->accept (pcVisitor);
+  }
 }
 
 //***************************************************************************
@@ -124,7 +142,7 @@ Employee* const & EmpContainer::SimpleContainer::operator[] (std::size_t index) 
 //
 // Returned:    None
 //***************************************************************************
-void EmpContainer::applyVisitor (EmpContainer::SimpleContainer &rcCon,
+void applyVisitor (SimpleContainer &rcCon,
   IEmployeeVisitor *pcVisitor)
 {
   for (std::size_t i = 0; i < rcCon.count (); ++i)

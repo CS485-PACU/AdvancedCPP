@@ -9,37 +9,33 @@
 #pragma once
 #include "Employee.h"
 
-namespace EmpContainer
-{
+class SimpleContainer {
 
-  class SimpleContainer
-  {
+	public:
+		SimpleContainer ();
 
-  public:
-    SimpleContainer ();
+		virtual ~SimpleContainer ();
 
-    virtual ~SimpleContainer ();
+		SimpleContainer (const SimpleContainer&) = delete;
+		SimpleContainer& operator=(const SimpleContainer&) = delete;
 
-    SimpleContainer (const SimpleContainer&) = delete;
-    SimpleContainer& operator=(const SimpleContainer&) = delete;
+		virtual void addEmployee (Employee* pcAcct);
 
-    virtual void addEmployee (Employee *pcAcct);
+		virtual bool isFull () const;
 
-    virtual bool isFull () const;
+		virtual std::size_t count () const;
 
-    virtual std::size_t count () const;
+		virtual Employee*& operator[](std::size_t index);
+		virtual Employee* const& operator[](std::size_t index) const;
 
-    virtual Employee*& operator[](std::size_t index);
-    virtual Employee* const & operator[](std::size_t index) const;
+		void applyVisitor (IEmployeeVisitor* pcVisitor);
 
+	private:
+		static const int MAX_PPL = 100;
+		Employee* mcEmployees[MAX_PPL];
+		int mCurrentEmployees = 0;
 
-  private:
-    static const int MAX_PPL = 100;
-    Employee *mcEmployees[MAX_PPL];
-    int mCurrentEmployees = 0;
-
-  };
-
-  // convienence function!
-  void applyVisitor (SimpleContainer &rcCon, IEmployeeVisitor *pcVisitor);
 };
+
+// convenience function!
+void applyVisitor (SimpleContainer& rcCon, IEmployeeVisitor* pcVisitor);

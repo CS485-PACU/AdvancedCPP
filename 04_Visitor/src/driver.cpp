@@ -29,7 +29,7 @@
 int main ()
 {
 
-  EmpContainer::SimpleContainer cTheContainer;
+  SimpleContainer cTheContainer;
   PrintVisitor cPrintVisitor(std::cout);
   GiveBonusVisitor cGiveBonusVisitor;
   SalarySumVisitor cSalarySumVisitor;
@@ -41,19 +41,21 @@ int main ()
 
   std::cout << std::endl;
   
-  EmpContainer::applyVisitor (cTheContainer, &cPrintVisitor);
+	// non-member, non-friend function
+  applyVisitor (cTheContainer, &cPrintVisitor);
   std::cout << std::endl;
   std::cout << std::endl;
 
-  EmpContainer::applyVisitor (cTheContainer, &cGiveBonusVisitor);
+	// member function
+  cTheContainer.applyVisitor (&cGiveBonusVisitor);
   std::cout << std::endl;
   std::cout << std::endl;
 
-  EmpContainer::applyVisitor (cTheContainer, &cPrintVisitor);
+  cTheContainer.applyVisitor (&cPrintVisitor);
   std::cout << std::endl;
   std::cout << std::endl;
 
-  EmpContainer::applyVisitor (cTheContainer, &cSalarySumVisitor);
+  cTheContainer.applyVisitor (&cSalarySumVisitor);
   cSalarySumVisitor.displaySums (std::cout);
 
   std::cout << std::endl;
