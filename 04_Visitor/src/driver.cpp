@@ -42,7 +42,7 @@ int main ()
   std::cout << std::endl;
   
 	// non-member, non-friend function
-  applyVisitor (cTheContainer, &cPrintVisitor);
+  applyVisitorNMNF (cTheContainer, &cPrintVisitor);
   std::cout << std::endl;
   std::cout << std::endl;
 

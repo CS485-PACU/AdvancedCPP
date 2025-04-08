@@ -142,7 +142,7 @@ void SimpleContainer::applyVisitor (IEmployeeVisitor *pcVisitor)
 //
 // Returned:    None
 //***************************************************************************
-void applyVisitor (SimpleContainer &rcCon,
+void applyVisitorNMNF (SimpleContainer &rcCon,
   IEmployeeVisitor *pcVisitor)
 {
   for (std::size_t i = 0; i < rcCon.count (); ++i)

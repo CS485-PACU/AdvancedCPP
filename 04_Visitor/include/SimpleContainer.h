@@ -38,4 +38,4 @@ class SimpleContainer {
 };
 
 // convenience function!
-void applyVisitor (SimpleContainer& rcCon, IEmployeeVisitor* pcVisitor);
+void applyVisitorNMNF (SimpleContainer& rcCon, IEmployeeVisitor* pcVisitor);
