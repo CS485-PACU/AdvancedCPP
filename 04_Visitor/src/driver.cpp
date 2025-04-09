@@ -15,12 +15,16 @@
 #include "../include/SalarySumVisitor.h"
 
 // for demonstration of function call writeup
-void bar() {
-	std::cout << "Visitor!\n";
+void bar(int value) {
+	std::cout << value << ": Visitor!\n";
 }
 
-void foo() {
-	bar();
+void foo(int value) {
+	bar(value);
+}
+
+void foo(int left, int right) {
+	bar(left + right);
 }
 // END for demonstration of function call writeup
 
@@ -70,7 +74,7 @@ int main ()
   std::cout << std::endl;
   std::cout << std::endl;
 
-	foo();
+	foo(480, 5);
 
 	return EXIT_SUCCESS;
 }
