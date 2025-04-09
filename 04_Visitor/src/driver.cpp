@@ -6,14 +6,23 @@
 // Assignment: Visitor Pattern Example
 // Purpose:    Demonstrate how the Visitor Pattern is implemented
 //***************************************************************************
-#include "Worker.h"
-#include "Manager.h"
-#include "PrintVisitor.h"
-#include "GiveBonusVisitor.h"
+#include "../include/Worker.h"
+#include "../include/Manager.h"
+#include "../include/PrintVisitor.h"
+#include "../include/GiveBonusVisitor.h"
 #include <iostream>
-#include "SimpleContainer.h"
-#include "SalarySumVisitor.h"
+#include "../include/SimpleContainer.h"
+#include "../include/SalarySumVisitor.h"
 
+// for demonstration of function call writeup
+void bar() {
+	std::cout << "Visitor!\n";
+}
+
+void foo() {
+	bar();
+}
+// END for demonstration of function call writeup
 
 //***************************************************************************
 // Function:    main
@@ -60,5 +69,8 @@ int main ()
 
   std::cout << std::endl;
   std::cout << std::endl;
-  return EXIT_SUCCESS;
+
+	foo();
+
+	return EXIT_SUCCESS;
 }

@@ -7,8 +7,8 @@
 // Purpose:    Demonstrate how the Visitor Pattern is implemented
 //***************************************************************************
 
-#include "Worker.h"
-#include "IEmployeeVisitor.h"
+#include "../include/Worker.h"
+#include "../include/IEmployeeVisitor.h"
 
 //***************************************************************************
 // Function:    operator<<

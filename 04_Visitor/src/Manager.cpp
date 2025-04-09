@@ -6,8 +6,8 @@
 // Assignment: Visitor Pattern Example
 // Purpose:    Demonstrate how the Visitor Pattern is implemented
 //***************************************************************************
-#include "Manager.h"
-#include "IEmployeeVisitor.h"
+#include "../include/Manager.h"
+#include "../include/IEmployeeVisitor.h"
 
 //***************************************************************************
 // Function:    operator<<

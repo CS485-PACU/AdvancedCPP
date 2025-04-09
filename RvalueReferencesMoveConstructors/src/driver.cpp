@@ -224,8 +224,12 @@ int main ()
   callFunctions();
 
 	std::cerr << " TEST\n";
-	test2();
+	test();
 	std::cerr<< "  TEST DONE\n";
+
+	std::cerr << " TEST2\n";
+	test2();
+	std::cerr<< "  TEST2 DONE\n";
 
   return EXIT_SUCCESS;
 }

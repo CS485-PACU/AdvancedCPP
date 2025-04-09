@@ -6,7 +6,7 @@
 // Assignment: Visitor Pattern Example
 // Purpose:    Demonstrate how the Visitor Pattern is implemented
 //***************************************************************************
-#include "SimpleContainer.h"
+#include "../include/SimpleContainer.h"
 
 //***************************************************************************
 // Constructor: SimpleContainer
