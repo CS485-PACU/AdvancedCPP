@@ -13,9 +13,7 @@
 			{
 					"label": "build",
 					"type": "shell",
-					"linux": {
-							"command": "make",
-					},
+					"command": "make",
 					"options": {
 							"cwd": "${workspaceFolder}"
 					},
