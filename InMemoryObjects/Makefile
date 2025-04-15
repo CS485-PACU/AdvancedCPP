@@ -12,11 +12,10 @@ FILES := $(wildcard src/*.cpp)
 TARGETS := $(addprefix bin/, $(notdir $(addsuffix .out, $(FILES))))
 TARGETS += $(addprefix bin/, $(notdir $(addsuffix .txt, $(FILES))))
 
-
 all: bin $(TARGETS) bin/main.s
 
-#compiler=clang++
-compiler=g++
+compiler=clang++-16
+#compiler=g++
 
 # clang (Mac)
 # Version 10 or later
@@ -48,3 +47,12 @@ clean:
 bin/%.txt: src/$(notdir %)
 	clang++-16 -c  -Iinclude  -std=${CPP_VERSION} -Xclang -fdump-record-layouts -emit-llvm $<  > $@_records.txt
 	clang++-16 -c  -Iinclude -std=${CPP_VERSION} -Xclang -fdump-vtable-layouts -emit-llvm $<  > $@_vtable.txt
+
+bin/cat.o:
+	clang++-16 -c -Iinclude -o $@ src/cat.cpp
+
+bin/example.o:
+	clang++-16 -c -Iinclude -o $@ src/example.cpp
+
+bin/testNames.o:
+	clang++-16 -c -Iinclude -o $@ src/testNames.cpp
