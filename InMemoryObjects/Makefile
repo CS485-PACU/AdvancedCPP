@@ -44,6 +44,7 @@ clean:
 
 
 # https://gist.github.com/GavinRay97/700ff1631d7e5ac460efd0780759c908
+# discussion of the vtable: https://itanium-cxx-abi.github.io/cxx-abi/abi.html#vtable
 bin/%.txt: src/$(notdir %)
 	clang++-16 -c  -Iinclude  -std=${CPP_VERSION} -Xclang -fdump-record-layouts -emit-llvm $<  > $@_records.txt
 	clang++-16 -c  -Iinclude -std=${CPP_VERSION} -Xclang -fdump-vtable-layouts -emit-llvm $<  > $@_vtable.txt
