@@ -12,14 +12,11 @@ all: bin bin/main
 ENSCRIPT_FLAGS=-C -T 2 -p - -M Letter -Ecpp --color -fCourier8
 VALGRIND_FLAGS=-v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all 
 
-compiler=clang++-16
+compiler=clang++
 #compiler=g++
 
-# clang (Mac)
-# Version 10 or later
-# CPP_VERSION=c++20
-# Version 9 or earlier
-CPP_VERSION=c++2b
+# clang 
+CPP_VERSION=c++23
 
 # g++ (Linux)
 # Version 10 or later
