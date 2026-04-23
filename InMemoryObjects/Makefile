@@ -14,7 +14,7 @@ TARGETS += $(addprefix bin/, $(notdir $(addsuffix .txt, $(FILES))))
 
 all: bin $(TARGETS) bin/main.s
 
-compiler=clang++-16
+compiler=clang++
 #compiler=g++
 
 # clang (Mac)
@@ -46,14 +46,20 @@ clean:
 # https://gist.github.com/GavinRay97/700ff1631d7e5ac460efd0780759c908
 # discussion of the vtable: https://itanium-cxx-abi.github.io/cxx-abi/abi.html#vtable
 bin/%.txt: src/$(notdir %)
-	clang++-16 -c  -Iinclude  -std=${CPP_VERSION} -Xclang -fdump-record-layouts -emit-llvm $<  > $@_records.txt
-	clang++-16 -c  -Iinclude -std=${CPP_VERSION} -Xclang -fdump-vtable-layouts -emit-llvm $<  > $@_vtable.txt
+	clang++ -c  -Iinclude  -std=${CPP_VERSION} -Xclang -fdump-record-layouts -emit-llvm $<  > $@_records.txt
+	clang++ -c  -Iinclude -std=${CPP_VERSION} -Xclang -fdump-vtable-layouts -emit-llvm $<  > $@_vtable.txt
 
 bin/cat.o:
-	clang++-16 -c -Iinclude -o $@ src/cat.cpp
+	clang++ -c -Iinclude -o $@ src/cat.cpp
 
 bin/example.o:
-	clang++-16 -c -Iinclude -o $@ src/example.cpp
+	clang++ -c -Iinclude -o $@ src/example.cpp
 
 bin/testNames.o:
-	clang++-16 -c -Iinclude -o $@ src/testNames.cpp
+	clang++ -c -Iinclude -o $@ src/testNames.cpp
+
+showNames:
+	clang++ -c -o bin/name.o src/name.cpp ; strings bin/name.o
+
+showTestNames:
+	clang++ -c -o bin/testNames.o src/testNames.cpp ; strings bin/testNames.o
